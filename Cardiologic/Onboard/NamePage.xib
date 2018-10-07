@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="NamePage" customModule="Cardiologic" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="jAf-sU-J7j">
+                    <rect key="frame" x="53.5" y="77" width="268.5" height="38.5"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter your" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j3e-DW-9vK">
+                            <rect key="frame" x="0.0" y="0.0" width="129.5" height="38.5"/>
+                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="28"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="first name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QSM-8Y-Kj1">
+                            <rect key="frame" x="137.5" y="0.0" width="131" height="38.5"/>
+                            <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="28"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                </stackView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="name_badge" translatesAutoresizingMaskIntoConstraints="NO" id="Wyg-xx-Bbf">
+                    <rect key="frame" x="38" y="192" width="300" height="234"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="300" id="By3-7q-j7Z"/>
+                        <constraint firstAttribute="height" constant="234" id="mAj-7T-hCa"/>
+                    </constraints>
+                </imageView>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="W7q-18-SMF">
+                    <rect key="frame" x="36" y="307" width="300" height="65"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="65" id="ZGe-4T-Jn8"/>
+                        <constraint firstAttribute="width" constant="300" id="ii8-2V-qyZ"/>
+                    </constraints>
+                    <nil key="textColor"/>
+                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="44"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" keyboardAppearance="alert" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                    <connections>
+                        <outlet property="delegate" destination="iN0-l3-epB" id="xY0-Rl-RLo"/>
+                    </connections>
+                </textField>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="Wyg-xx-Bbf" firstAttribute="leading" secondItem="W7q-18-SMF" secondAttribute="trailing" constant="-298" id="EVa-j3-2Je"/>
+                <constraint firstItem="Wyg-xx-Bbf" firstAttribute="leading" secondItem="ma8-h9-rie" secondAttribute="leading" constant="38" id="OkI-b9-XwT"/>
+                <constraint firstItem="Wyg-xx-Bbf" firstAttribute="top" secondItem="ma8-h9-rie" secondAttribute="top" constant="172" id="Vbs-vN-zjS"/>
+                <constraint firstItem="jAf-sU-J7j" firstAttribute="top" secondItem="ma8-h9-rie" secondAttribute="top" constant="57" id="cEW-w7-7NA"/>
+                <constraint firstItem="W7q-18-SMF" firstAttribute="top" secondItem="Wyg-xx-Bbf" secondAttribute="bottom" constant="-119" id="kSi-0x-fTy"/>
+                <constraint firstItem="jAf-sU-J7j" firstAttribute="centerX" secondItem="ma8-h9-rie" secondAttribute="centerX" id="xl3-Ts-6l3"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ma8-h9-rie"/>
+            <connections>
+                <outlet property="image" destination="Wyg-xx-Bbf" id="ZeP-xd-P1s"/>
+                <outlet property="nameTextField" destination="W7q-18-SMF" id="T4Y-ci-o7K"/>
+                <outlet property="subTitleLabel" destination="QSM-8Y-Kj1" id="CTX-tr-Iy7"/>
+                <outlet property="titleLabel" destination="j3e-DW-9vK" id="KDE-Uh-Olt"/>
+            </connections>
+            <point key="canvasLocation" x="33.5" y="78.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="name_badge" width="266" height="190"/>
+    </resources>
+</document>

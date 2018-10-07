@@ -1,0 +1,869 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B516556A210C00C1005DBD4A /* OnboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5165569210C00C1005DBD4A /* OnboardViewController.swift */; };
+		B518BBF9212CB0C800A93959 /* WorkoutsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B518BBF8212CB0C800A93959 /* WorkoutsViewController.swift */; };
+		B53C5342211A4A22001D28EC /* HeightWeightPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B53C5341211A4A22001D28EC /* HeightWeightPage.swift */; };
+		B53C5344211A4A27001D28EC /* HeightWeightPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = B53C5343211A4A27001D28EC /* HeightWeightPage.xib */; };
+		B5674AFD212637D80015BDA3 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5674AFC212637D80015BDA3 /* SettingsTableViewController.swift */; };
+		B582281220FFDADA00B3AFEA /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B582281120FFDADA00B3AFEA /* TabBarViewController.swift */; };
+		B58C8E02211BDB9500822C33 /* NamePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58C8E00211BDB9400822C33 /* NamePage.swift */; };
+		B58C8E03211BDB9500822C33 /* NamePage.xib in Resources */ = {isa = PBXBuildFile; fileRef = B58C8E01211BDB9500822C33 /* NamePage.xib */; };
+		B599041120EC39CC00B136FA /* header_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = B599041020EC39CC00B136FA /* header_logo.png */; };
+		B599041520EC596F00B136FA /* AnimatedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B599041420EC596F00B136FA /* AnimatedLabel.swift */; };
+		B5B23B73211AAD0A00A10AF0 /* scroll_animation.json in Resources */ = {isa = PBXBuildFile; fileRef = B5B23B72211AAD0900A10AF0 /* scroll_animation.json */; };
+		B5B7D4E7210A948C006F8AFF /* ChartFormatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B7D4E6210A948C006F8AFF /* ChartFormatters.swift */; };
+		B5B8335E2110F92C005F3DAE /* GenderPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B8335A2110F92B005F3DAE /* GenderPage.swift */; };
+		B5B8335F2110F92C005F3DAE /* GenderPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5B8335B2110F92B005F3DAE /* GenderPage.xib */; };
+		B5B83364211108AE005F3DAE /* CustomOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B83362211108AE005F3DAE /* CustomOverlay.swift */; };
+		B5B83365211108AE005F3DAE /* CustomOverlay.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5B83363211108AE005F3DAE /* CustomOverlay.xib */; };
+		B5B833682111166A005F3DAE /* BirthdayPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B833662111166A005F3DAE /* BirthdayPage.swift */; };
+		B5B833692111166A005F3DAE /* BirthdayPage.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5B833672111166A005F3DAE /* BirthdayPage.xib */; };
+		B5BE0C432109106600A9107F /* refresh_animation.json in Resources */ = {isa = PBXBuildFile; fileRef = B5BE0C422109106600A9107F /* refresh_animation.json */; };
+		B5BE0C452109135D00A9107F /* explosion_animation.json in Resources */ = {isa = PBXBuildFile; fileRef = B5BE0C442109135D00A9107F /* explosion_animation.json */; };
+		B5BE0C472109205900A9107F /* TrendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE0C462109205900A9107F /* TrendsViewController.swift */; };
+		B5BE0C49210925A500A9107F /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5BE0C48210925A500A9107F /* HealthKitManager.swift */; };
+		B5C3FFD62151EB1700115C76 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5C3FFD52151EB1700115C76 /* HealthKit.framework */; };
+		B5C3FFD82151EB7700115C76 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5C3FFD72151EB7700115C76 /* HealthKit.framework */; };
+		B5DAB87A210BE6DE00B32145 /* VariabilityInfo.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5DAB879210BE6DE00B32145 /* VariabilityInfo.xib */; };
+		B5DAB881210BEBE900B32145 /* hrv_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = B5DAB880210BEBE900B32145 /* hrv_icon.png */; };
+		B5F9CE9620C09CC500723244 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F9CE9520C09CC500723244 /* AppDelegate.swift */; };
+		B5F9CE9820C09CC500723244 /* StatsContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F9CE9720C09CC500723244 /* StatsContainerViewController.swift */; };
+		B5F9CE9B20C09CC500723244 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5F9CE9920C09CC500723244 /* Main.storyboard */; };
+		B5F9CE9D20C09CC500723244 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5F9CE9C20C09CC500723244 /* Assets.xcassets */; };
+		B5F9CEA020C09CC500723244 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5F9CE9E20C09CC500723244 /* LaunchScreen.storyboard */; };
+		B5F9CEAA20C09DDF00723244 /* StatsContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5F9CEA920C09DDF00723244 /* StatsContentViewController.swift */; };
+		B5FF6A5E20DAD9E200075C2B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FF6A5D20DAD9E200075C2B /* MainViewController.swift */; };
+		B5FF6A6520DADFC000075C2B /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B5FF6A6320DADFC000075C2B /* Interface.storyboard */; };
+		B5FF6A6720DADFC100075C2B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5FF6A6620DADFC100075C2B /* Assets.xcassets */; };
+		B5FF6A6E20DADFC100075C2B /* CardiologicWatch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B5FF6A6D20DADFC100075C2B /* CardiologicWatch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B5FF6A7320DADFC100075C2B /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FF6A7220DADFC100075C2B /* InterfaceController.swift */; };
+		B5FF6A7520DADFC100075C2B /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5FF6A7420DADFC100075C2B /* ExtensionDelegate.swift */; };
+		B5FF6A7920DADFC100075C2B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B5FF6A7820DADFC100075C2B /* Assets.xcassets */; };
+		B5FF6A7E20DADFC100075C2B /* CardiologicWatch.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = B5FF6A6120DADFC000075C2B /* CardiologicWatch.app */; };
+		E35F1B33A00953A15559E70B /* Pods_Cardiologic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A88A1D1B552023D18D07B51 /* Pods_Cardiologic.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B5FF6A6F20DADFC100075C2B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B5F9CE8A20C09CC400723244 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B5FF6A6C20DADFC100075C2B;
+			remoteInfo = "CardiologicWatch Extension";
+		};
+		B5FF6A7C20DADFC100075C2B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B5F9CE8A20C09CC400723244 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B5FF6A6020DADFC000075C2B;
+			remoteInfo = CardiologicWatch;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B5FF6A8220DADFC100075C2B /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				B5FF6A6E20DADFC100075C2B /* CardiologicWatch Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B5FF6A8620DADFC100075C2B /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				B5FF6A7E20DADFC100075C2B /* CardiologicWatch.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		834A5915888DD32D92253CCA /* Pods-Cardiologic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cardiologic.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Cardiologic/Pods-Cardiologic.debug.xcconfig"; sourceTree = "<group>"; };
+		8A88A1D1B552023D18D07B51 /* Pods_Cardiologic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Cardiologic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B5165569210C00C1005DBD4A /* OnboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardViewController.swift; sourceTree = "<group>"; };
+		B518BBF8212CB0C800A93959 /* WorkoutsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutsViewController.swift; sourceTree = "<group>"; };
+		B530A0A320DAE87E00C032B6 /* CardiologicWatch Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "CardiologicWatch Extension.entitlements"; sourceTree = "<group>"; };
+		B53C5341211A4A22001D28EC /* HeightWeightPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeightWeightPage.swift; sourceTree = "<group>"; };
+		B53C5343211A4A27001D28EC /* HeightWeightPage.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeightWeightPage.xib; sourceTree = "<group>"; };
+		B5674AFC212637D80015BDA3 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		B57EC10E20C102130037EE62 /* Cardiologic.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Cardiologic.entitlements; sourceTree = "<group>"; };
+		B582281120FFDADA00B3AFEA /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		B58C8E00211BDB9400822C33 /* NamePage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NamePage.swift; sourceTree = "<group>"; };
+		B58C8E01211BDB9500822C33 /* NamePage.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NamePage.xib; sourceTree = "<group>"; };
+		B599041020EC39CC00B136FA /* header_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = header_logo.png; sourceTree = "<group>"; };
+		B599041420EC596F00B136FA /* AnimatedLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedLabel.swift; sourceTree = "<group>"; };
+		B5B23B72211AAD0900A10AF0 /* scroll_animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = scroll_animation.json; sourceTree = "<group>"; };
+		B5B7D4E6210A948C006F8AFF /* ChartFormatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartFormatters.swift; sourceTree = "<group>"; };
+		B5B8335A2110F92B005F3DAE /* GenderPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenderPage.swift; sourceTree = "<group>"; };
+		B5B8335B2110F92B005F3DAE /* GenderPage.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GenderPage.xib; sourceTree = "<group>"; };
+		B5B83362211108AE005F3DAE /* CustomOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomOverlay.swift; sourceTree = "<group>"; };
+		B5B83363211108AE005F3DAE /* CustomOverlay.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomOverlay.xib; sourceTree = "<group>"; };
+		B5B833662111166A005F3DAE /* BirthdayPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BirthdayPage.swift; sourceTree = "<group>"; };
+		B5B833672111166A005F3DAE /* BirthdayPage.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BirthdayPage.xib; sourceTree = "<group>"; };
+		B5BE0C422109106600A9107F /* refresh_animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = refresh_animation.json; sourceTree = "<group>"; };
+		B5BE0C442109135D00A9107F /* explosion_animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = explosion_animation.json; sourceTree = "<group>"; };
+		B5BE0C462109205900A9107F /* TrendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendsViewController.swift; sourceTree = "<group>"; };
+		B5BE0C48210925A500A9107F /* HealthKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
+		B5C3FFD52151EB1700115C76 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS4.3.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
+		B5C3FFD72151EB7700115C76 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		B5DAB879210BE6DE00B32145 /* VariabilityInfo.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VariabilityInfo.xib; sourceTree = "<group>"; };
+		B5DAB880210BEBE900B32145 /* hrv_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hrv_icon.png; sourceTree = "<group>"; };
+		B5F9CE9220C09CC500723244 /* Cardiologic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cardiologic.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B5F9CE9520C09CC500723244 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B5F9CE9720C09CC500723244 /* StatsContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsContainerViewController.swift; sourceTree = "<group>"; };
+		B5F9CE9A20C09CC500723244 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B5F9CE9C20C09CC500723244 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B5F9CE9F20C09CC500723244 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		B5F9CEA120C09CC500723244 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B5F9CEA920C09DDF00723244 /* StatsContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsContentViewController.swift; sourceTree = "<group>"; };
+		B5FF6A5D20DAD9E200075C2B /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		B5FF6A6120DADFC000075C2B /* CardiologicWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CardiologicWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B5FF6A6420DADFC000075C2B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		B5FF6A6620DADFC100075C2B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B5FF6A6820DADFC100075C2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B5FF6A6D20DADFC100075C2B /* CardiologicWatch Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "CardiologicWatch Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B5FF6A7220DADFC100075C2B /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		B5FF6A7420DADFC100075C2B /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		B5FF6A7820DADFC100075C2B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B5FF6A7A20DADFC100075C2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C23329A010FED2FEEF1B9204 /* Pods-Cardiologic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cardiologic.release.xcconfig"; path = "Pods/Target Support Files/Pods-Cardiologic/Pods-Cardiologic.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		00E5171355F7DF96794E43FA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B5F9CE8F20C09CC500723244 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E35F1B33A00953A15559E70B /* Pods_Cardiologic.framework in Frameworks */,
+				B5C3FFD82151EB7700115C76 /* HealthKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B5FF6A6A20DADFC100075C2B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B5C3FFD62151EB1700115C76 /* HealthKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3406DE6F4D33FBB28AAE2115 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				834A5915888DD32D92253CCA /* Pods-Cardiologic.debug.xcconfig */,
+				C23329A010FED2FEEF1B9204 /* Pods-Cardiologic.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		B57EC10B20C102130037EE62 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B5C3FFD72151EB7700115C76 /* HealthKit.framework */,
+				B5C3FFD52151EB1700115C76 /* HealthKit.framework */,
+				8A88A1D1B552023D18D07B51 /* Pods_Cardiologic.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B5B833582110F845005F3DAE /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				B5F9CE9520C09CC500723244 /* AppDelegate.swift */,
+				B5FF6A5D20DAD9E200075C2B /* MainViewController.swift */,
+				B5BE0C462109205900A9107F /* TrendsViewController.swift */,
+				B5F9CE9720C09CC500723244 /* StatsContainerViewController.swift */,
+				B5F9CEA920C09DDF00723244 /* StatsContentViewController.swift */,
+				B582281120FFDADA00B3AFEA /* TabBarViewController.swift */,
+				B5674AFC212637D80015BDA3 /* SettingsTableViewController.swift */,
+				B518BBF8212CB0C800A93959 /* WorkoutsViewController.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		B5B833592110F85F005F3DAE /* Onboard */ = {
+			isa = PBXGroup;
+			children = (
+				B5B83362211108AE005F3DAE /* CustomOverlay.swift */,
+				B5B83363211108AE005F3DAE /* CustomOverlay.xib */,
+				B58C8E01211BDB9500822C33 /* NamePage.xib */,
+				B58C8E00211BDB9400822C33 /* NamePage.swift */,
+				B5B8335A2110F92B005F3DAE /* GenderPage.swift */,
+				B5B8335B2110F92B005F3DAE /* GenderPage.xib */,
+				B5B833662111166A005F3DAE /* BirthdayPage.swift */,
+				B5B833672111166A005F3DAE /* BirthdayPage.xib */,
+				B53C5341211A4A22001D28EC /* HeightWeightPage.swift */,
+				B53C5343211A4A27001D28EC /* HeightWeightPage.xib */,
+				B5165569210C00C1005DBD4A /* OnboardViewController.swift */,
+			);
+			path = Onboard;
+			sourceTree = "<group>";
+		};
+		B5BE0C4C21093E4200A9107F /* External */ = {
+			isa = PBXGroup;
+			children = (
+				B5BE0C48210925A500A9107F /* HealthKitManager.swift */,
+				B5B7D4E6210A948C006F8AFF /* ChartFormatters.swift */,
+				B599041420EC596F00B136FA /* AnimatedLabel.swift */,
+			);
+			path = External;
+			sourceTree = "<group>";
+		};
+		B5DAB87D210BE81F00B32145 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				B599041020EC39CC00B136FA /* header_logo.png */,
+				B5DAB880210BEBE900B32145 /* hrv_icon.png */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		B5F9CE8920C09CC400723244 = {
+			isa = PBXGroup;
+			children = (
+				B5F9CE9420C09CC500723244 /* Cardiologic */,
+				B5FF6A6220DADFC000075C2B /* CardiologicWatch */,
+				B5FF6A7120DADFC100075C2B /* CardiologicWatch Extension */,
+				B5F9CE9320C09CC500723244 /* Products */,
+				B57EC10B20C102130037EE62 /* Frameworks */,
+				3406DE6F4D33FBB28AAE2115 /* Pods */,
+			);
+			sourceTree = "<group>";
+		};
+		B5F9CE9320C09CC500723244 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B5F9CE9220C09CC500723244 /* Cardiologic.app */,
+				B5FF6A6120DADFC000075C2B /* CardiologicWatch.app */,
+				B5FF6A6D20DADFC100075C2B /* CardiologicWatch Extension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B5F9CE9420C09CC500723244 /* Cardiologic */ = {
+			isa = PBXGroup;
+			children = (
+				B5B833592110F85F005F3DAE /* Onboard */,
+				B5B833582110F845005F3DAE /* Application */,
+				B5DAB87D210BE81F00B32145 /* Images */,
+				B5BE0C4C21093E4200A9107F /* External */,
+				B57EC10E20C102130037EE62 /* Cardiologic.entitlements */,
+				B5B23B72211AAD0900A10AF0 /* scroll_animation.json */,
+				B5BE0C422109106600A9107F /* refresh_animation.json */,
+				B5BE0C442109135D00A9107F /* explosion_animation.json */,
+				B5F9CE9C20C09CC500723244 /* Assets.xcassets */,
+				B5F9CE9920C09CC500723244 /* Main.storyboard */,
+				B5F9CE9E20C09CC500723244 /* LaunchScreen.storyboard */,
+				B5F9CEA120C09CC500723244 /* Info.plist */,
+				B5DAB879210BE6DE00B32145 /* VariabilityInfo.xib */,
+			);
+			path = Cardiologic;
+			sourceTree = "<group>";
+		};
+		B5FF6A6220DADFC000075C2B /* CardiologicWatch */ = {
+			isa = PBXGroup;
+			children = (
+				B5FF6A6320DADFC000075C2B /* Interface.storyboard */,
+				B5FF6A6620DADFC100075C2B /* Assets.xcassets */,
+				B5FF6A6820DADFC100075C2B /* Info.plist */,
+			);
+			path = CardiologicWatch;
+			sourceTree = "<group>";
+		};
+		B5FF6A7120DADFC100075C2B /* CardiologicWatch Extension */ = {
+			isa = PBXGroup;
+			children = (
+				B530A0A320DAE87E00C032B6 /* CardiologicWatch Extension.entitlements */,
+				B5FF6A7220DADFC100075C2B /* InterfaceController.swift */,
+				B5FF6A7420DADFC100075C2B /* ExtensionDelegate.swift */,
+				B5FF6A7820DADFC100075C2B /* Assets.xcassets */,
+				B5FF6A7A20DADFC100075C2B /* Info.plist */,
+			);
+			path = "CardiologicWatch Extension";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B5F9CE9120C09CC500723244 /* Cardiologic */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B5F9CEA420C09CC500723244 /* Build configuration list for PBXNativeTarget "Cardiologic" */;
+			buildPhases = (
+				B50222BD230319BA2CB0564C /* [CP] Check Pods Manifest.lock */,
+				B5F9CE8E20C09CC500723244 /* Sources */,
+				B5F9CE8F20C09CC500723244 /* Frameworks */,
+				B5F9CE9020C09CC500723244 /* Resources */,
+				B5FF6A8620DADFC100075C2B /* Embed Watch Content */,
+				777B714E938BE1C6D3129096 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B5FF6A7D20DADFC100075C2B /* PBXTargetDependency */,
+			);
+			name = Cardiologic;
+			productName = Cardiologic;
+			productReference = B5F9CE9220C09CC500723244 /* Cardiologic.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B5FF6A6020DADFC000075C2B /* CardiologicWatch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B5FF6A8320DADFC100075C2B /* Build configuration list for PBXNativeTarget "CardiologicWatch" */;
+			buildPhases = (
+				B5FF6A5F20DADFC000075C2B /* Resources */,
+				B5FF6A8220DADFC100075C2B /* Embed App Extensions */,
+				00E5171355F7DF96794E43FA /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B5FF6A7020DADFC100075C2B /* PBXTargetDependency */,
+			);
+			name = CardiologicWatch;
+			productName = CardiologicWatch;
+			productReference = B5FF6A6120DADFC000075C2B /* CardiologicWatch.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		B5FF6A6C20DADFC100075C2B /* CardiologicWatch Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B5FF6A7F20DADFC100075C2B /* Build configuration list for PBXNativeTarget "CardiologicWatch Extension" */;
+			buildPhases = (
+				B5FF6A6920DADFC100075C2B /* Sources */,
+				B5FF6A6A20DADFC100075C2B /* Frameworks */,
+				B5FF6A6B20DADFC100075C2B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "CardiologicWatch Extension";
+			productName = "CardiologicWatch Extension";
+			productReference = B5FF6A6D20DADFC100075C2B /* CardiologicWatch Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B5F9CE8A20C09CC400723244 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0940;
+				LastUpgradeCheck = 0940;
+				ORGANIZATIONNAME = pulseApp;
+				TargetAttributes = {
+					B5F9CE9120C09CC500723244 = {
+						CreatedOnToolsVersion = 9.4;
+						LastSwiftMigration = 1000;
+						SystemCapabilities = {
+							com.apple.HealthKit = {
+								enabled = 1;
+							};
+						};
+					};
+					B5FF6A6020DADFC000075C2B = {
+						CreatedOnToolsVersion = 9.4.1;
+					};
+					B5FF6A6C20DADFC100075C2B = {
+						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1000;
+						SystemCapabilities = {
+							com.apple.HealthKit.watchos = {
+								enabled = 1;
+							};
+						};
+					};
+				};
+			};
+			buildConfigurationList = B5F9CE8D20C09CC400723244 /* Build configuration list for PBXProject "Cardiologic" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B5F9CE8920C09CC400723244;
+			productRefGroup = B5F9CE9320C09CC500723244 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B5F9CE9120C09CC500723244 /* Cardiologic */,
+				B5FF6A6020DADFC000075C2B /* CardiologicWatch */,
+				B5FF6A6C20DADFC100075C2B /* CardiologicWatch Extension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B5F9CE9020C09CC500723244 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B5F9CEA020C09CC500723244 /* LaunchScreen.storyboard in Resources */,
+				B5B83365211108AE005F3DAE /* CustomOverlay.xib in Resources */,
+				B5DAB87A210BE6DE00B32145 /* VariabilityInfo.xib in Resources */,
+				B5BE0C432109106600A9107F /* refresh_animation.json in Resources */,
+				B5BE0C452109135D00A9107F /* explosion_animation.json in Resources */,
+				B5B8335F2110F92C005F3DAE /* GenderPage.xib in Resources */,
+				B5F9CE9D20C09CC500723244 /* Assets.xcassets in Resources */,
+				B5B23B73211AAD0A00A10AF0 /* scroll_animation.json in Resources */,
+				B5F9CE9B20C09CC500723244 /* Main.storyboard in Resources */,
+				B599041120EC39CC00B136FA /* header_logo.png in Resources */,
+				B5B833692111166A005F3DAE /* BirthdayPage.xib in Resources */,
+				B58C8E03211BDB9500822C33 /* NamePage.xib in Resources */,
+				B5DAB881210BEBE900B32145 /* hrv_icon.png in Resources */,
+				B53C5344211A4A27001D28EC /* HeightWeightPage.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B5FF6A5F20DADFC000075C2B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B5FF6A6720DADFC100075C2B /* Assets.xcassets in Resources */,
+				B5FF6A6520DADFC000075C2B /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B5FF6A6B20DADFC100075C2B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B5FF6A7920DADFC100075C2B /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		777B714E938BE1C6D3129096 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Cardiologic/Pods-Cardiologic-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AORangeSlider/AORangeSlider.framework",
+				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
+				"${BUILT_PRODUCTS_DIR}/DropDown/DropDown.framework",
+				"${BUILT_PRODUCTS_DIR}/FlexTabBar/FlexTabBar.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyOnboard/SwiftyOnboard.framework",
+				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AORangeSlider.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DropDown.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FlexTabBar.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyOnboard.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lottie.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Cardiologic/Pods-Cardiologic-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B50222BD230319BA2CB0564C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Cardiologic-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B5F9CE8E20C09CC500723244 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B516556A210C00C1005DBD4A /* OnboardViewController.swift in Sources */,
+				B599041520EC596F00B136FA /* AnimatedLabel.swift in Sources */,
+				B5B8335E2110F92C005F3DAE /* GenderPage.swift in Sources */,
+				B53C5342211A4A22001D28EC /* HeightWeightPage.swift in Sources */,
+				B5F9CEAA20C09DDF00723244 /* StatsContentViewController.swift in Sources */,
+				B518BBF9212CB0C800A93959 /* WorkoutsViewController.swift in Sources */,
+				B5F9CE9820C09CC500723244 /* StatsContainerViewController.swift in Sources */,
+				B5BE0C472109205900A9107F /* TrendsViewController.swift in Sources */,
+				B5F9CE9620C09CC500723244 /* AppDelegate.swift in Sources */,
+				B5B7D4E7210A948C006F8AFF /* ChartFormatters.swift in Sources */,
+				B58C8E02211BDB9500822C33 /* NamePage.swift in Sources */,
+				B5BE0C49210925A500A9107F /* HealthKitManager.swift in Sources */,
+				B5B833682111166A005F3DAE /* BirthdayPage.swift in Sources */,
+				B5674AFD212637D80015BDA3 /* SettingsTableViewController.swift in Sources */,
+				B582281220FFDADA00B3AFEA /* TabBarViewController.swift in Sources */,
+				B5FF6A5E20DAD9E200075C2B /* MainViewController.swift in Sources */,
+				B5B83364211108AE005F3DAE /* CustomOverlay.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B5FF6A6920DADFC100075C2B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B5FF6A7520DADFC100075C2B /* ExtensionDelegate.swift in Sources */,
+				B5FF6A7320DADFC100075C2B /* InterfaceController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B5FF6A7020DADFC100075C2B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B5FF6A6C20DADFC100075C2B /* CardiologicWatch Extension */;
+			targetProxy = B5FF6A6F20DADFC100075C2B /* PBXContainerItemProxy */;
+		};
+		B5FF6A7D20DADFC100075C2B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B5FF6A6020DADFC000075C2B /* CardiologicWatch */;
+			targetProxy = B5FF6A7C20DADFC100075C2B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		B5F9CE9920C09CC500723244 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B5F9CE9A20C09CC500723244 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		B5F9CE9E20C09CC500723244 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B5F9CE9F20C09CC500723244 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		B5FF6A6320DADFC000075C2B /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B5FF6A6420DADFC000075C2B /* Base */,
+			);
+			name = Interface.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B5F9CEA220C09CC500723244 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG=0";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		B5F9CEA320C09CC500723244 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B5F9CEA520C09CC500723244 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 834A5915888DD32D92253CCA /* Pods-Cardiologic.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Cardiologic/Cardiologic.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QN2ZNRANK9;
+				INFOPLIST_FILE = Cardiologic/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.pulseApp.Cardiologic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		B5F9CEA620C09CC500723244 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C23329A010FED2FEEF1B9204 /* Pods-Cardiologic.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Cardiologic/Cardiologic.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QN2ZNRANK9;
+				INFOPLIST_FILE = Cardiologic/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.pulseApp.Cardiologic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		B5FF6A8020DADFC100075C2B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = "CardiologicWatch Extension/CardiologicWatch Extension.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QN2ZNRANK9;
+				INFOPLIST_FILE = "CardiologicWatch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.pulseApp.Cardiologic.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 4.3;
+			};
+			name = Debug;
+		};
+		B5FF6A8120DADFC100075C2B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = "CardiologicWatch Extension/CardiologicWatch Extension.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QN2ZNRANK9;
+				INFOPLIST_FILE = "CardiologicWatch Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.pulseApp.Cardiologic.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 4.3;
+			};
+			name = Release;
+		};
+		B5FF6A8420DADFC100075C2B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QN2ZNRANK9;
+				IBSC_MODULE = CardiologicWatch_Extension;
+				INFOPLIST_FILE = CardiologicWatch/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pulseApp.Cardiologic.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 4.3;
+			};
+			name = Debug;
+		};
+		B5FF6A8520DADFC100075C2B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QN2ZNRANK9;
+				IBSC_MODULE = CardiologicWatch_Extension;
+				INFOPLIST_FILE = CardiologicWatch/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pulseApp.Cardiologic.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 4.3;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B5F9CE8D20C09CC400723244 /* Build configuration list for PBXProject "Cardiologic" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B5F9CEA220C09CC500723244 /* Debug */,
+				B5F9CEA320C09CC500723244 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B5F9CEA420C09CC500723244 /* Build configuration list for PBXNativeTarget "Cardiologic" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B5F9CEA520C09CC500723244 /* Debug */,
+				B5F9CEA620C09CC500723244 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B5FF6A7F20DADFC100075C2B /* Build configuration list for PBXNativeTarget "CardiologicWatch Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B5FF6A8020DADFC100075C2B /* Debug */,
+				B5FF6A8120DADFC100075C2B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B5FF6A8320DADFC100075C2B /* Build configuration list for PBXNativeTarget "CardiologicWatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B5FF6A8420DADFC100075C2B /* Debug */,
+				B5FF6A8520DADFC100075C2B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B5F9CE8A20C09CC400723244 /* Project object */;
+}

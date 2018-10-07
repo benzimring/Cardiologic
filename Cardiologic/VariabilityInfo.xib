@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="DropDownCell" customModule="DropDown">
+            <rect key="frame" x="0.0" y="0.0" width="300" height="70"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A period of relatively low variability readings may indicate an overactive ANS and decreased cardiovascular health." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bt2-3k-eE4">
+                    <rect key="frame" x="67" y="34" width="233" height="36"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="233" id="6jU-fU-pMK"/>
+                        <constraint firstAttribute="height" constant="36" id="UUl-R7-QdQ"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="9"/>
+                    <color key="textColor" red="0.44055999299999998" green="0.44055999299999998" blue="0.44055999299999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Heart rate variability measures the variation in time of the heart's interbeat interval (IBI)." lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dhL-pA-i6q">
+                    <rect key="frame" x="67" y="6" width="226" height="34"/>
+                    <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="11"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hrv_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="V3h-HR-6x8">
+                    <rect key="frame" x="0.0" y="12" width="70" height="46"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="70" id="95p-qb-ga2"/>
+                        <constraint firstAttribute="height" constant="46" id="vzz-3D-CrL"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="bt2-3k-eE4" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="34" id="9mb-Fh-suF"/>
+                <constraint firstItem="V3h-HR-6x8" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="12" id="Iri-b0-y8i"/>
+                <constraint firstAttribute="trailing" secondItem="dhL-pA-i6q" secondAttribute="trailing" constant="7" id="Phk-No-PFh"/>
+                <constraint firstItem="dhL-pA-i6q" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="67" id="QIg-6Z-lbJ"/>
+                <constraint firstItem="bt2-3k-eE4" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="67" id="aMr-Cd-LhQ"/>
+                <constraint firstItem="V3h-HR-6x8" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="ksV-qP-OVX"/>
+                <constraint firstItem="dhL-pA-i6q" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="6" id="qo1-5r-HsS"/>
+                <constraint firstAttribute="bottom" secondItem="dhL-pA-i6q" secondAttribute="bottom" constant="30" id="wRT-h8-gtn"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-12" y="-155"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="hrv_icon.png" width="324" height="167"/>
+    </resources>
+</document>
