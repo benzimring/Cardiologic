@@ -18,16 +18,7 @@ class NamePage: SwiftyOnboardPage {
     }
     
     override func awakeFromNib() {
-        nameTextField.addTarget(self, action: #selector(nameTextFieldDidChange), for: .editingChanged)
-    }
-    
-    @objc func nameTextFieldDidChange() {
-        guard let text = nameTextField.text else { return }
-        if text.count > 0 {
-            NotificationCenter.default.post(Notification.init(name: AppDelegate.kInfoCompleteNotification))
-        } else {
-            NotificationCenter.default.post(Notification.init(name: AppDelegate.kInfoIncompleteNotification))
-        }
+        //
     }
     
     override func saveInfo() -> Bool {

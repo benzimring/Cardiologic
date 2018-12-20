@@ -20,8 +20,10 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
     
     let healthStore = HKHealthStore()
     let heartRateUnit = HKUnit(from: "count/min")
-    var workoutActive = false
+    let heartRateSampleType = HKObjectType.quantityType(forIdentifier: .heartRate)
+    let workoutConfiguration = HKWorkoutConfiguration()
     
+    var workoutActive = false
     var session: HKWorkoutSession?
     var currentQuery: HKQuery?
     var heartRate: Double = -1
@@ -33,6 +35,9 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
         let wcSession = WCSession.default
         wcSession.delegate = self
         wcSession.activate()
+        
+        workoutConfiguration.activityType = .mixedCardio
+        workoutConfiguration.locationType = .indoor
     }
     
     override func awake(withContext context: Any?) {
@@ -73,31 +78,11 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
         print("workoutSession failure")
     }
     
-    func startWorkout() {
-        // if workout started do nothing
-        if (session != nil) { return }
-        
-        // Configure the workout session.
-        let workoutConfiguration = HKWorkoutConfiguration()
-        workoutConfiguration.activityType = .mixedCardio
-        workoutConfiguration.locationType = .indoor
-        
-        do {
-            session = try HKWorkoutSession(configuration: workoutConfiguration)
-            session?.delegate = self
-        } catch {
-            fatalError("Unable to create the workout session")
-        }
-        
-        healthStore.start(self.session!)
-    }
-    
     func workoutDidStart() {
-        let heartRateSampleType = HKObjectType.quantityType(forIdentifier: .heartRate)
-        
+        print("workoutDidStart")
         // if query in progress, stop
-        if let currentQuery = currentQuery {
-            healthStore.stop(currentQuery)
+        if currentQuery != nil {
+            healthStore.stop(currentQuery!)
         }
         
         // new query
@@ -122,11 +107,9 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
     }
     
     func workoutDidEnd() {
-        healthStore.stop(self.currentQuery!)
+        print("workoutDidEnd")
         heartRateLabel.setText("--")
         heartRate = -1
-        session = nil
-        ecgImage.stopAnimating()
     }
     
     func fetchLatestHeartRateSample(completionHandler: @escaping (_ sample: HKQuantitySample) -> Void) {
@@ -173,21 +156,27 @@ class InterfaceController: WKInterfaceController, HKWorkoutSessionDelegate {
     @IBAction func didTouchStartButton() {
         if self.workoutActive {
             // finish the current session
-            self.workoutActive = false
-            self.button.setTitle("Start")
-            self.heartRateLabel.setText("--")
-            self.ecgImage.stopAnimating()
-            if let session = self.session {
-                healthStore.end(session)
-            }
+            workoutActive = false
+            button.setTitle("Start")
+            heartRateLabel.setText("--")
+            ecgImage.stopAnimating()
+            session?.stopActivity(with: Date())
+            session?.end()
         } else {
             // start a new session
-            self.workoutActive = true
-            self.button.setTitle("Stop")
-            startWorkout()
+            workoutActive = true
+            button.setTitle("Stop")
+            // Configure the workout session.
+            
+            do {
+                session = try HKWorkoutSession(healthStore: healthStore, configuration: workoutConfiguration)
+                session?.delegate = self
+            } catch {
+                fatalError("Failed to create a workout session object")
+            }
+            session?.startActivity(with: Date())
         }
     }
-    
 }
 
 /* watch delegation */

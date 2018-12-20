@@ -10,6 +10,7 @@
 import UIKit
 import HealthKit
 import Charts
+import MessageUI
 
 class StatsContentViewController: UIViewController {
 
@@ -55,7 +56,9 @@ class StatsContentViewController: UIViewController {
         }
 
         // Do any additional setup after loading the view.
-        requestAuthorization()
+        if hkm.isHealthDataAvailable() {
+            requestAuthorization()
+        }
         formatChart()
         setDateLabel()
     }
@@ -263,7 +266,7 @@ extension StatsContentViewController: IAxisValueFormatter, ChartViewDelegate {
         let startOfDay = Calendar.current.startOfDay(for: results[0].startDate)
         for result in results {
             guard let currData = result as? HKQuantitySample else { return }
-            let x = currData.startDate.timeIntervalSince(startOfDay)/7200 // normalized to 12
+            let x = currData.startDate.timeIntervalSince(startOfDay)/7200 // normalized to 12 because x-axis labels
             let y = currData.quantity.doubleValue(for: .heartRateUnit)
             avgHR += y
             if y > maxHR { maxHR = y }
@@ -347,6 +350,7 @@ extension StatsContentViewController: IAxisValueFormatter, ChartViewDelegate {
     
     /* plot workout data on chart */
     func graphWorkouts(_ workouts: [HKWorkout]) {
+        if workouts.count == 0 { return }
         let startOfDay = Calendar.current.startOfDay(for: workouts[0].startDate)
         
         var workoutSets = [LineChartDataSet()]
@@ -358,12 +362,12 @@ extension StatsContentViewController: IAxisValueFormatter, ChartViewDelegate {
             let startTime = workout.startDate.timeIntervalSince(startOfDay)/7200
             let endTime = workout.endDate.timeIntervalSince(startOfDay)/7200
             // y=30 so line is graphed at bottom
-            let image = UIImage(named: workout.workoutActivityType.getString)?.withRenderingMode(.alwaysTemplate)
-            let imgView = UIImageView()
-            imgView.tintColor = .black
-            imgView.image = image
+//            let image = UIImage(named: workout.workoutActivityType.getString)?.withRenderingMode(.alwaysTemplate)
+//            let imgView = UIImageView()
+//            imgView.tintColor = .black
+//            imgView.image = image
             
-            let _ = workoutSets[currentSet].addEntry(ChartDataEntry(x: startTime, y: 30, icon: imgView.image))
+            let _ = workoutSets[currentSet].addEntry(ChartDataEntry(x: startTime, y: 30, icon: nil))
             let _ = workoutSets[currentSet].addEntry(ChartDataEntry(x: endTime, y: 30, icon: nil))
             currentSet += 1
         }
@@ -400,6 +404,67 @@ extension StatsContentViewController: IAxisValueFormatter, ChartViewDelegate {
     func stringForValue(_ value: Double, axis: AxisBase?) -> String {
         let times = ["12\n\u{263E}\u{fe0e}", "2\n", "4\n", "6\n", "8\n", "10\n", "12\n\u{2600}\u{fe0e}", "2\n", "4\n", "6\n", "8\n", "10\n", "12\n\u{263E}\u{fe0e}"]
         return times[Int(value)]
+    }
+}
+
+/* sharing data */
+extension StatsContentViewController: MFMailComposeViewControllerDelegate {
+    // export day graph as CSV
+    @IBAction func didTouchShareButton(_ sender: Any) {
+        if !MFMailComposeViewController.canSendMail() { return }
+        if chartData.dataSets.isEmpty { return }
+        
+        // date stuff init
+        let calendar = Calendar.current
+        let today = calendar.startOfDay(for: Date())
+        let startDay = calendar.startOfDay(for: calendar.date(byAdding: .day, value: numDaysBeforeToday!, to: today)!)
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
+        
+        var dateHeader = "HR Data"  // default
+        var haveDateHeader = false
+        
+        // create CSV
+        let output = NSMutableString()
+        output.append("Date,BPM\n")
+        for set in chartData.dataSets {
+            for i in 0..<set.entryCount {
+                if let entry = set.entryForIndex(i) {
+                    let date = calendar.date(byAdding: .second, value: Int(entry.x*7200), to: startDay)!
+                    let dateString = formatter.string(from: date)
+                    output.append("\(dateString),\(Int(entry.y))\n")
+                    
+                    // grab date header on first run through
+                    if !haveDateHeader {
+                        dateHeader = dateString.components(separatedBy: " ")[0]
+                        haveDateHeader = true
+                    }
+                }
+            }
+        }
+        
+        // format for mailing
+        if let data = output.data(using: String.Encoding.utf8.rawValue, allowLossyConversion: false) {
+            let emailViewController = csvEmailController(header: dateHeader, data: data)
+            self.present(emailViewController, animated: true, completion: nil)
+        }
+        
+    }
+    
+    func csvEmailController(header: String, data: Data) -> MFMailComposeViewController {
+        let emailController = MFMailComposeViewController()
+        emailController.mailComposeDelegate = self
+        emailController.setSubject("[Cardiologic] \(header)")
+        emailController.setMessageBody("", isHTML: false)
+        
+        // Attaching the .CSV file to the email.
+        emailController.addAttachmentData(data, mimeType: "text/csv", fileName: "\(header).csv")
+        
+        return emailController
+    }
+    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true, completion: nil)
     }
 }
 

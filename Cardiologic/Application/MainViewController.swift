@@ -36,7 +36,9 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        requestAuthorization()
+        if hkm.isHealthDataAvailable() {
+            requestAuthorization()
+        }
         updateDateLabel()
         setGreetingLabel()
         liveHeartRateLabel.alpha = 0
@@ -47,21 +49,23 @@ class MainViewController: UIViewController {
         explosionAnimationView.setAnimation(named: "explosion_animation")
         explosionAnimationView.animationSpeed = 0.4
         
-        // delayed refresh to gather most recent data
-        DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
-            self.requestAuthorization()
+        // refresh to get most recent data
+        if hkm.isHealthDataAvailable() {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                self.requestAuthorization()
+            }
         }
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        print("MainViewController: viewWillAppear")
         if liveHeartRateLabel.alpha == 0 { return }
         
         if self.heartRate != -1 {
-            // if already launched, delayed refresh to gather most recent data
-            DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
+            // delayed refresh to gather most recent data
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                 self.requestAuthorization()
             }
+            self.animateHeart()
         }
     }
 
@@ -272,15 +276,21 @@ extension MainViewController {
                                               .restingHeartRateType,
                                               .workoutType,
                                               .stepsType,
-                                              .variabilityType]
+                                              .variabilityType,
+                                              .genderType,
+                                              .weightType,
+                                              .heightType,
+                                              .dateOfBirthType]
         
         // auth request
         hkm.requestAuthorization(readingTypes: readingTypes, writingTypes: nil) {
-            self.getDayHR()
-            self.getDayRHR()
-            self.getDayWorkouts()
-            self.getDaySteps()
-            self.setGreetingLabel()
+            DispatchQueue.main.async {
+                self.getDayHR()
+                self.getDayRHR()
+                self.getDayWorkouts()
+                self.getDaySteps()
+                self.setGreetingLabel()
+            }
             print("auth success")
         }
     }

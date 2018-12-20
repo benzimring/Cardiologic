@@ -39,9 +39,6 @@ class TrendsViewController: UIViewController, ChartViewDelegate {
         graphDailySteps()
         graphVariability()
         graphWorkoutTime()
-        
-        
-
     }
 
     override func didReceiveMemoryWarning() {

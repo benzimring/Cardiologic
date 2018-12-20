@@ -7,6 +7,8 @@ import SwiftyOnboard
 
 class BirthdayPage: SwiftyOnboardPage {
     
+    let hkm = HealthKitManager()
+    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var subTitleLabel: UILabel!
@@ -49,6 +51,15 @@ class BirthdayPage: SwiftyOnboardPage {
             return true
         }
         return false
+    }
+    
+    override func fillIn() {
+        guard let birthday = hkm.userBirthday() else { return }
+        print(birthday)
+        dateTextField.text = String(birthday.day!)
+        monthTextField.text = String(birthday.month!)
+        yearTextField.text = String(birthday.year!)
+        
     }
     
     func isValidDate(date: String) -> Bool {
@@ -120,11 +131,8 @@ extension BirthdayPage: UITextFieldDelegate {
             if let year = Int(yearTextField.text!) {
                 if (1900...2018).contains(year) {
                     yearTextField.resignFirstResponder()
-                    NotificationCenter.default.post(Notification.init(name: AppDelegate.kInfoCompleteNotification))
                 }
             }
-        } else {
-            NotificationCenter.default.post(Notification.init(name: AppDelegate.kInfoIncompleteNotification))
         }
     }
     

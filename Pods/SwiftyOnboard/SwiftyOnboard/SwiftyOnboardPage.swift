@@ -81,6 +81,10 @@ open class SwiftyOnboardPage: UIView {
         subTitle.heightAnchor.constraint(equalToConstant: 100).isActive = true
     }
     
+    open func fillIn() {
+        //
+    }
+    
     open func saveInfo() -> Bool {
         // override this!!!
         return true

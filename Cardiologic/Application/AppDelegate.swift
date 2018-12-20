@@ -25,8 +25,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     static let kNextNotification = Notification.Name("kNextNotification")
     static let kPrevNotification = Notification.Name("kPrevNotification")
-    static let kInfoCompleteNotification = Notification.Name("kInfoCompleteNotification")
-    static let kInfoIncompleteNotification = Notification.Name("kInfoIncompleteNotification")
     static let kHideLogoNotification = Notification.Name("kHideLogoNotification")
     static let kShowLogoNotification = Notification.Name("kShowLogoNotification")
 

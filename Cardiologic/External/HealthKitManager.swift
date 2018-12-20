@@ -15,6 +15,10 @@ extension HKObjectType {
     static let variabilityType = HKQuantityType.quantityType(forIdentifier: .heartRateVariabilitySDNN)!
     static let restingHeartRateType = HKQuantityType.quantityType(forIdentifier: .restingHeartRate)!
     static let stepsType = HKQuantityType.quantityType(forIdentifier: .stepCount)!
+    static let heightType = HKQuantityType.quantityType(forIdentifier: .height)!
+    static let weightType = HKQuantityType.quantityType(forIdentifier: .bodyMass)!
+    static let genderType = HKObjectType.characteristicType(forIdentifier: .biologicalSex)!
+    static let dateOfBirthType = HKObjectType.characteristicType(forIdentifier: .dateOfBirth)!
     static let workoutType = HKObjectType.workoutType()
 }
 
@@ -149,6 +153,72 @@ class HealthKitManager {
             }
             completion()
         }
+    }
+    
+    /**
+     Fetches user's Gender, if available
+     - Returns: HKBiologicalSex enum
+    */
+    public func userGender() -> HKBiologicalSex {
+        do {
+            let sex = try health.biologicalSex()
+            return sex.biologicalSex
+        } catch {
+            return .notSet
+        }
+    }
+    
+    /**
+     Fetches user's latest height, if available
+     - Parameter handler: closure to handle the user's height (in inches).  If not set, value is -1.
+    */
+    public func userHeight(handler: @escaping (Int) -> ()) {
+        let query = HKSampleQuery(sampleType: .heightType, predicate: nil, limit: -1, sortDescriptors: nil) { (query, results, error) in
+            if let result = results?.last as? HKQuantitySample {
+                handler(Int(result.quantity.doubleValue(for: HKUnit(from: .inch))))
+            } else if results?.count == 0 {
+                handler(-1)
+            } else {
+                print("HealthKitManager: userHeight failed to fetch samples... auth'd?")
+                handler(-1)
+            }
+        }
+        health.execute(query)
+    }
+    
+    /**
+     Fetches user's latest weight, if available
+     - Parameter handler: closure to handle the user's weight (in lbs).  If not set, value is -1.
+     */
+    public func userWeight(handler: @escaping (Int) -> ()) {
+        let query = HKSampleQuery(sampleType: .weightType, predicate: nil, limit: -1, sortDescriptors: nil) {
+            (query, results, error) in
+            if let result = results?.last as? HKQuantitySample {
+                handler(Int(result.quantity.doubleValue(for: HKUnit(from: .pound))))
+            } else if results?.count == 0 {
+                handler(-1)
+            } else {
+                print("HealthKitManager: userWeight failed to fetch samples... auth'd?")
+                handler(-1)
+            }
+        }
+        health.execute(query)
+    }
+    
+    /**
+     Fetches user's birthday.
+     - Returns: DateComponents if set, or nil if not set
+     */
+    public func userBirthday() -> DateComponents? {
+        do {
+           return try health.dateOfBirthComponents()
+        } catch {
+            return nil
+        }
+    }
+    
+    public func isHealthDataAvailable() -> Bool {
+        return HKHealthStore.isHealthDataAvailable()
     }
     
     

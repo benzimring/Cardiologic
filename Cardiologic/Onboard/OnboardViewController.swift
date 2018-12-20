@@ -21,7 +21,9 @@ class OnboardViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        requestAuthorization()
+        if hkm.isHealthDataAvailable() {
+            requestAuthorization()
+        }
         onboardView.style = .light
         onboardView.delegate = self
         onboardView.dataSource = self
@@ -38,7 +40,7 @@ class OnboardViewController: UIViewController {
         let pages = [namePage, birthdayPage, heightWeightPage, genderPage]
         if index < 3 {
             onboardView.goToPage(index: index + 1, animated: true)
-            NotificationCenter.default.post(Notification.init(name: AppDelegate.kInfoIncompleteNotification))
+            //NotificationCenter.default.post(Notification.init(name: AppDelegate.kInfoIncompleteNotification))
         } else {
             NSLog("attempting to save...")
             var pageIndex = 0
@@ -123,11 +125,20 @@ extension OnboardViewController {
                                               .restingHeartRateType,
                                               .workoutType(),
                                               .stepsType,
-                                              .variabilityType]
+                                              .variabilityType,
+                                              .genderType,
+                                              .weightType,
+                                              .heightType,
+                                              .dateOfBirthType]
         
         // auth request
         hkm.requestAuthorization(readingTypes: readingTypes, writingTypes: nil) {
             print("auth success")
+            DispatchQueue.main.async {
+                self.birthdayPage?.fillIn()
+                self.heightWeightPage?.fillIn()
+                self.genderPage?.fillIn()
+            }
         }
     }
 }

@@ -4,8 +4,11 @@
 
 import UIKit
 import SwiftyOnboard
+import HealthKit
 
 class GenderPage: SwiftyOnboardPage {
+    
+    let hkm = HealthKitManager()
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subTitleLabel: UILabel!
@@ -13,13 +16,7 @@ class GenderPage: SwiftyOnboardPage {
     @IBOutlet weak var maleButton: UIButton!
     @IBOutlet weak var femaleButton: UIButton!
     
-    enum Gender {
-        case male
-        case female
-        case none
-    }
-    
-    var selectedGender: Gender = .none
+    var selectedGender: HKBiologicalSex = .notSet
     
     class func instanceFromNib() -> UIView {
         return UINib(nibName: "GenderPage", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! UIView
@@ -28,6 +25,19 @@ class GenderPage: SwiftyOnboardPage {
     override func awakeFromNib() {
         maleButton.setImage(UIImage(named: "male_filled")!, for: .highlighted)
         femaleButton.setImage(UIImage(named: "female_filled")!, for: .highlighted)
+    }
+    
+    override func fillIn() {
+        // assign gender, if already in HealthKit
+        DispatchQueue.main.async {
+            switch self.hkm.userGender() {
+            case .male:
+                self.didTouchMaleButton(self)
+            case .female:
+                self.didTouchFemaleButton(self)
+            default: ()
+            }
+        }
     }
 
     @IBAction func didTouchMaleButton(_ sender: Any) {
@@ -53,7 +63,6 @@ class GenderPage: SwiftyOnboardPage {
         selectedGender = .male
         maleButton.isMultipleTouchEnabled = false
         femaleButton.isMultipleTouchEnabled = true
-        NotificationCenter.default.post(Notification.init(name: AppDelegate.kInfoCompleteNotification))
     }
     
     @IBAction func didTouchFemaleButton(_ sender: Any) {
@@ -79,7 +88,6 @@ class GenderPage: SwiftyOnboardPage {
         selectedGender = .female
         femaleButton.isMultipleTouchEnabled = false
         maleButton.isMultipleTouchEnabled = true
-        NotificationCenter.default.post(Notification.init(name: AppDelegate.kInfoCompleteNotification))
     }
     
     override func saveInfo() -> Bool {

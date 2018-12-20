@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -34,10 +33,10 @@
                     </subviews>
                 </stackView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="name_badge" translatesAutoresizingMaskIntoConstraints="NO" id="Wyg-xx-Bbf">
-                    <rect key="frame" x="38" y="192" width="300" height="234"/>
+                    <rect key="frame" x="37.5" y="192" width="300" height="234"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="300" id="By3-7q-j7Z"/>
-                        <constraint firstAttribute="height" constant="234" id="mAj-7T-hCa"/>
+                        <constraint firstAttribute="height" constant="234" id="vNv-UT-3x9"/>
+                        <constraint firstAttribute="width" constant="300" id="zbl-RH-ujK"/>
                     </constraints>
                 </imageView>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="W7q-18-SMF">
@@ -56,11 +55,11 @@
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="Wyg-xx-Bbf" firstAttribute="leading" secondItem="W7q-18-SMF" secondAttribute="trailing" constant="-298" id="EVa-j3-2Je"/>
-                <constraint firstItem="Wyg-xx-Bbf" firstAttribute="leading" secondItem="ma8-h9-rie" secondAttribute="leading" constant="38" id="OkI-b9-XwT"/>
-                <constraint firstItem="Wyg-xx-Bbf" firstAttribute="top" secondItem="ma8-h9-rie" secondAttribute="top" constant="172" id="Vbs-vN-zjS"/>
+                <constraint firstItem="Wyg-xx-Bbf" firstAttribute="leading" secondItem="W7q-18-SMF" secondAttribute="trailing" constant="-298.5" id="4LK-tb-OF6"/>
+                <constraint firstItem="Wyg-xx-Bbf" firstAttribute="top" secondItem="jAf-sU-J7j" secondAttribute="bottom" constant="76.5" id="QsD-9q-k2w"/>
                 <constraint firstItem="jAf-sU-J7j" firstAttribute="top" secondItem="ma8-h9-rie" secondAttribute="top" constant="57" id="cEW-w7-7NA"/>
-                <constraint firstItem="W7q-18-SMF" firstAttribute="top" secondItem="Wyg-xx-Bbf" secondAttribute="bottom" constant="-119" id="kSi-0x-fTy"/>
+                <constraint firstItem="Wyg-xx-Bbf" firstAttribute="centerX" secondItem="ma8-h9-rie" secondAttribute="centerX" id="fi2-C0-26N"/>
+                <constraint firstItem="W7q-18-SMF" firstAttribute="top" secondItem="Wyg-xx-Bbf" secondAttribute="bottom" constant="-119" id="p8q-pX-sda"/>
                 <constraint firstItem="jAf-sU-J7j" firstAttribute="centerX" secondItem="ma8-h9-rie" secondAttribute="centerX" id="xl3-Ts-6l3"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ma8-h9-rie"/>
@@ -74,6 +73,6 @@
         </view>
     </objects>
     <resources>
-        <image name="name_badge" width="266" height="190"/>
+        <image name="name_badge" width="800" height="572"/>
     </resources>
 </document>

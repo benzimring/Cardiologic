@@ -8,6 +8,7 @@ import AORangeSlider
 import Lottie
 
 class HeightWeightPage: SwiftyOnboardPage {
+    let hkm = HealthKitManager()
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var image: UIImageView!
@@ -30,8 +31,30 @@ class HeightWeightPage: SwiftyOnboardPage {
     
         weightTextField.addTarget(self, action: #selector(weightTextChanged), for: .editingChanged)
         addWeightDoneButton()
-        initHeightSlider()
     }
+    
+    override func fillIn() {
+        // fetch weight
+        hkm.userWeight() { weight in
+            if weight != -1 {
+                DispatchQueue.main.async {
+                    self.weightTextField.text = String(weight)
+                }
+            }
+        }
+        
+        // fetch height
+        hkm.userHeight() { height in
+            DispatchQueue.main.async {
+                if height == -1 {
+                    self.initHeightSlider(70)
+                } else {
+                    self.initHeightSlider(height)
+                }
+            }
+        }
+    }
+
     
     /* adds "Done" button to weight input */
     func addWeightDoneButton() {
@@ -47,10 +70,10 @@ class HeightWeightPage: SwiftyOnboardPage {
         self.weightTextField.inputAccessoryView = doneToolbar
     }
     
-    func initHeightSlider() {
+    func initHeightSlider(_ value: Int) {
         heightSlider.minimumValue = 0.5
         heightSlider.maximumValue = 0.85
-        heightSlider.highValue = 0.7
+        heightSlider.highValue = Double(value)/100
         heightSlider.highHandleImageNormal = #imageLiteral(resourceName: "height_right")
         
         heightSlider.trackBackgroundImage = #imageLiteral(resourceName: "hollowProgress").resizableImage(withCapInsets: UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5))
@@ -65,7 +88,7 @@ class HeightWeightPage: SwiftyOnboardPage {
             let feet = inches/12
             let r = inches%12
             self.heightLabel.text = "\(feet)' \(r)\""
-            if inches != 70 {
+            if inches != value {
                 self.slideAnimation.stop()
                 self.slideAnimation.alpha = 0
             }
@@ -87,13 +110,11 @@ class HeightWeightPage: SwiftyOnboardPage {
     
     @objc func doneButton() {
         weightTextField.resignFirstResponder()
-        NotificationCenter.default.post(Notification.init(name: AppDelegate.kInfoCompleteNotification))
     }
     
     @objc func weightTextChanged() {
         if weightTextField.text?.count == 3 {
             weightTextField.resignFirstResponder()
-            NotificationCenter.default.post(Notification.init(name: AppDelegate.kInfoCompleteNotification))
         }
     }
     
