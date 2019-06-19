@@ -195,6 +195,8 @@ extension HKWorkoutActivityType {
 
 extension UIColor {
     static let heartColor = UIColor(red: 127/255, green: 24/255, blue: 27/255, alpha: 1)
+   static let steelBlue = UIColor(red: 70/255, green: 130/255, blue: 180/255, alpha: 1)
+    static let darkGreen = UIColor(red: 0, green: 128/255, blue: 0, alpha: 1)
 }
 
 extension UIView {

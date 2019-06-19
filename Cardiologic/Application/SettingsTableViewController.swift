@@ -60,6 +60,10 @@ class SettingsTableViewController: UITableViewController {
         }
     }
     
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 40.0
+    }
+    
 
     /*
     // In a storyboard-based application, you will often want to do a little preparation before navigation

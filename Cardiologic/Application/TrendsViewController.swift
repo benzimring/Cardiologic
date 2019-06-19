@@ -15,143 +15,93 @@ import DropDown
 class TrendsViewController: UIViewController, ChartViewDelegate {
 
     let hkm = HealthKitManager()
-
-    @IBOutlet weak var rhrLineChart: LineChartView!
-    let rhrChartData = LineChartData()
-
     
-    @IBOutlet weak var stepLineChart: LineChartView!
-    let stepChartData = LineChartData()
+    @IBOutlet weak var rhrBarChart: BarChartView!
+    let rhrChartData = BarChartData()
     
-    @IBOutlet weak var variabilityLineChart: LineChartView!
-    let variabilityChartData = LineChartData()
+    @IBOutlet weak var variabilityBarChart: BarChartView!
+    let variabilityChartData = BarChartData()
     @IBOutlet weak var aboutVariabilityButton: UIButton!
     
-    @IBOutlet weak var workoutLineChart: LineChartView!
-    let workoutChartData = LineChartData()
+    @IBOutlet weak var workoutBarChart: BarChartView!
+    let workoutChartData = BarChartData()
+    
+    @IBOutlet weak var stepBarChart: BarChartView!
+    let stepChartData = BarChartData()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         configureCharts()
-        graphRestingHeartRate()
-        graphDailySteps()
-        graphVariability()
-        graphWorkoutTime()
+        graphRestingHeartRateBar()
+        graphVariabilityBar()
+        graphWorkoutTimeBar()
+        graphDailyStepsBar()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    func graphRestingHeartRate() {
+    
+    func graphRestingHeartRateBar() {
+        print("graphRHRBar")
+        // select range of 7 days
         let calendar = Calendar.current
         let startDay = calendar.date(byAdding: .day, value: -7, to: calendar.startOfDay(for: Date()))
+        
         hkm.restingHeartRate(from: startDay!, to: Date()) { samples in
-            if samples.count < 2 {
+            if samples.isEmpty {
                 print("graphRestingHeartRate: not enough data")
                 DispatchQueue.main.async {
-                    self.rhrLineChart.data = nil
-                    self.rhrLineChart.notifyDataSetChanged()
+                    self.rhrBarChart.data = nil
+                    self.rhrBarChart.notifyDataSetChanged()
                 }
                 return
             }
+            
             // create chart entries for each data point
-            var entries = [ChartDataEntry]()
+            var entries = [BarChartDataEntry]()
             for sample in samples {
                 let exactDate = sample.startDate
                 let day = calendar.startOfDay(for: exactDate)
                 let x = Double(Int(day.timeIntervalSinceNow/86400))
                 let y = sample.quantity.doubleValue(for: .heartRateUnit)
-                entries.append(ChartDataEntry(x: x, y: y))
+                entries.append(BarChartDataEntry(x: x, y: y))
             }
             
-            // create data set of those points
-            let dataSet = LineChartDataSet()
+            let dataSet = BarChartDataSet()
             for entry in entries {
                 let _ = dataSet.addEntry(entry)
             }
             
-            // dataset settings
-            dataSet.mode = .cubicBezier
-            dataSet.drawCirclesEnabled = true
-            dataSet.circleRadius = 2
-            dataSet.circleColors = [.red]
-            dataSet.circleHoleColor = .red
             dataSet.colors = [.red]
-            dataSet.drawValuesEnabled = true
-            dataSet.valueFont = UIFont(name: "Avenir", size: 12)!
+            dataSet.valueFont = UIFont(descriptor: .init(name: "Avenir Book", size: 12), size: 12)
             dataSet.valueFormatter = DigitValueFormatter()
-            dataSet.lineWidth = 2
-            dataSet.highlightColor = .clear
             self.rhrChartData.addDataSet(dataSet)
             DispatchQueue.main.async {
-                self.rhrLineChart.xAxis.axisMinimum = -7
-                self.rhrLineChart.xAxis.axisMaximum = 0
-                self.rhrLineChart.xAxis.labelCount = dataSet.entryCount
-                self.rhrLineChart.xAxis.valueFormatter = DayValueFormatter()
-                self.rhrLineChart.leftAxis.axisMaximum = dataSet.yMax + 10
-                self.rhrLineChart.notifyDataSetChanged()
+                self.rhrBarChart.notifyDataSetChanged()
             }
+            
         }
     }
     
-    func graphDailySteps() {
-        hkm.dailySteps(handler: { (results) in
-            let calendar = Calendar.current
-            let endDate = Date()
-            let startDate = calendar.date(byAdding: .day, value: -7, to: endDate, wrappingComponents: false)
-            let dataSet = LineChartDataSet()
-            results.enumerateStatistics(from: startDate!, to: endDate) { statistics, stop in
-                if let quantity = statistics.sumQuantity() {
-                    let exactDate = statistics.startDate
-                    let day = calendar.startOfDay(for: exactDate)
-                    let x = Double(Int(day.timeIntervalSinceNow/86400))
-                    let y = quantity.doubleValue(for: .count())
-                    let entry = ChartDataEntry(x: x, y: y)
-                    let _ = dataSet.addEntry(entry)
-                }
-            }
-            
-            if dataSet.entryCount < 2 {
-                print("graphDailySteps: not enough data")
+    func graphVariabilityBar() {
+        let calendar = Calendar.current
+        let startDay = calendar.date(byAdding: .day, value: -7, to: calendar.startOfDay(for: Date()))
+        
+        hkm.variability(from: startDay!, to: Date()) { (samples) in
+            if samples.isEmpty {
+                print("graphVariability: not enough data")
                 DispatchQueue.main.async {
-                    self.stepLineChart.data = nil
-                    self.stepLineChart.notifyDataSetChanged()
+                    self.variabilityBarChart.data = nil
+                    self.variabilityBarChart.notifyDataSetChanged()
                 }
                 return
             }
-            let darkGreen = UIColor(red: 0, green: 128/255, blue: 0, alpha: 1)
-            // dataset settings
-            dataSet.mode = .cubicBezier
-            dataSet.drawCirclesEnabled = true
-            dataSet.circleRadius = 2
-            dataSet.circleColors = [darkGreen]
-            dataSet.circleHoleColor = darkGreen
-            dataSet.colors = [darkGreen]
-            dataSet.drawValuesEnabled = true
-            dataSet.valueFont = UIFont(name: "Avenir", size: 12)!
-            dataSet.valueFormatter = DigitValueFormatter()
-            dataSet.lineWidth = 2
-            dataSet.highlightColor = .clear
-            self.stepChartData.addDataSet(dataSet)
-            DispatchQueue.main.async {
-                self.stepLineChart.xAxis.axisMinimum = -7
-                self.stepLineChart.xAxis.axisMaximum = 0
-                self.stepLineChart.xAxis.valueFormatter = DayValueFormatter()
-                self.stepLineChart.leftAxis.axisMaximum = dataSet.yMax + 3000
-                self.stepLineChart.notifyDataSetChanged()
-            }
             
-        })
-    }
-    
-    func graphVariability() {
-        let calendar = Calendar.current
-        let startDay = calendar.date(byAdding: .day, value: -7, to: calendar.startOfDay(for: Date()))!
-        hkm.variability(from: startDay, to: Date()) { (samples) in
             var results = [Double: (Double, Int)]()
             for sample in samples {
                 let exactDate = sample.startDate
@@ -166,52 +116,42 @@ class TrendsViewController: UIViewController, ChartViewDelegate {
                 }
             }
             
-            let dataSet = LineChartDataSet()
+            let dataSet = BarChartDataSet()
             for i in -7...0 {
                 if let result = results[Double(i)] {
                     let x = Double(i)
                     let y = result.0/Double(result.1)
-                    let entry = ChartDataEntry(x: x, y: y)
+                    let entry = BarChartDataEntry(x: x, y: y)
                     let _ = dataSet.addEntry(entry)
                 }
             }
             
-            if dataSet.entryCount < 2 {
-                print("graphVariability: not enough data")
+            // dataset settings
+            dataSet.colors = [.purple]
+            dataSet.valueFont = UIFont(descriptor: .init(name: "Avenir Book", size: 12), size: 12)
+            dataSet.valueFormatter = VariabilityValueFormatter()
+            self.variabilityChartData.addDataSet(dataSet)
+            DispatchQueue.main.async {
+                self.variabilityBarChart.notifyDataSetChanged()
+            }
+            
+        }
+    }
+    
+    func graphWorkoutTimeBar() {
+        let calendar = Calendar.current
+        let startDay = calendar.date(byAdding: .day, value: -7, to: calendar.startOfDay(for: Date()))
+        
+        hkm.workouts(from: startDay!, to: Date()) { (samples) in
+            if samples.isEmpty {
+                print("graphWorkoutTime: not enough data")
                 DispatchQueue.main.async {
-                    self.variabilityLineChart.data = nil
-                    self.variabilityLineChart.notifyDataSetChanged()
+                    self.workoutBarChart.data = nil
+                    self.workoutBarChart.notifyDataSetChanged()
                 }
                 return
             }
             
-            // dataset settings
-            dataSet.mode = .cubicBezier
-            dataSet.drawCirclesEnabled = true
-            dataSet.circleRadius = 2
-            dataSet.circleColors = [.purple]
-            dataSet.circleHoleColor = .purple
-            dataSet.colors = [.purple]
-            dataSet.drawValuesEnabled = true
-            dataSet.valueFont = UIFont(name: "Avenir", size: 12)!
-            dataSet.valueFormatter = VariabilityValueFormatter()
-            dataSet.lineWidth = 2
-            dataSet.highlightColor = .clear
-            self.variabilityChartData.addDataSet(dataSet)
-            DispatchQueue.main.async {
-                self.variabilityLineChart.xAxis.axisMinimum = -7
-                self.variabilityLineChart.xAxis.axisMaximum = 0
-                self.variabilityLineChart.xAxis.valueFormatter = DayValueFormatter()
-                self.variabilityLineChart.leftAxis.axisMaximum = dataSet.yMax + 20
-                self.variabilityLineChart.notifyDataSetChanged()
-            }
-        }
-    }
-    
-    func graphWorkoutTime() {
-        let calendar = Calendar.current
-        let startDay = calendar.date(byAdding: .day, value: -7, to: calendar.startOfDay(for: Date()))!
-        hkm.workouts(from: startDay, to: Date()) { (samples) in
             var results = [Double: (Double, Int)]()
             for sample in samples {
                 let exactDate = sample.startDate
@@ -225,71 +165,89 @@ class TrendsViewController: UIViewController, ChartViewDelegate {
                     results[x]!.1 += 1
                 }
             }
-
-            let dataSet = LineChartDataSet()
+            
+            let dataSet = BarChartDataSet()
             for i in -7...0 {
                 if let result = results[Double(i)] {
                     let x = Double(i)
                     let y = result.0/Double(result.1)
-                    let entry = ChartDataEntry(x: x, y: y)
+                    let entry = BarChartDataEntry(x: x, y: y)
                     let _ = dataSet.addEntry(entry)
                 }
             }
             
-            if dataSet.entryCount < 2 {
-                print("graphWorkoutTime: not enough data")
-                DispatchQueue.main.async {
-                    self.workoutLineChart.data = nil
-                    self.workoutLineChart.notifyDataSetChanged()
-                }
-                return
-            }
-            let steelBlue = UIColor(red: 70/255, green: 130/255, blue: 180/255, alpha: 1)
             // dataset settings
-            dataSet.mode = .cubicBezier
-            dataSet.drawCirclesEnabled = true
-            dataSet.circleRadius = 2
-            dataSet.circleColors = [steelBlue]
-            dataSet.circleHoleColor = steelBlue
-            dataSet.colors = [steelBlue]
-            dataSet.drawValuesEnabled = true
-            dataSet.valueFont = UIFont(name: "Avenir", size: 12)!
+            dataSet.colors = [.steelBlue]
+            dataSet.valueFont = UIFont(descriptor: .init(name: "Avenir Book", size: 12), size: 12)
             dataSet.valueFormatter = WorkoutValueFormatter()
-            dataSet.lineWidth = 2
-            dataSet.highlightColor = .clear
             self.workoutChartData.addDataSet(dataSet)
             DispatchQueue.main.async {
-                self.workoutLineChart.xAxis.axisMinimum = -7
-                self.workoutLineChart.xAxis.axisMaximum = 0
-                self.workoutLineChart.xAxis.spaceMin = 0.2
-                self.workoutLineChart.xAxis.spaceMax = 0.2
-                self.workoutLineChart.xAxis.valueFormatter = DayValueFormatter()
-                self.workoutLineChart.leftAxis.axisMaximum = dataSet.yMax + 15
-                self.workoutLineChart.notifyDataSetChanged()
+                self.workoutBarChart.notifyDataSetChanged()
             }
         }
     }
     
+    func graphDailyStepsBar() {
+        
+        hkm.dailySteps { (results) in
+            let calendar = Calendar.current
+            let startDay = calendar.date(byAdding: .day, value: -7, to: calendar.startOfDay(for: Date()))
+            
+            let dataSet = BarChartDataSet()
+            
+            // enumerate daily step data
+            results.enumerateStatistics(from: startDay!, to: Date()) { statistics, stop in
+                if let quantity = statistics.sumQuantity() {
+                    let exactDate = statistics.startDate
+                    let day = calendar.startOfDay(for: exactDate)
+                    let x = Double(Int(day.timeIntervalSinceNow/86400))
+                    let y = quantity.doubleValue(for: .count())
+                    let entry = BarChartDataEntry(x: x, y: y)
+                    let _ = dataSet.addEntry(entry)
+                }
+            }
+            
+            if dataSet.entryCount == 0 {
+                print("graphDailySteps: not enough data")
+                DispatchQueue.main.async {
+                    self.stepBarChart.data = nil
+                    self.stepBarChart.notifyDataSetChanged()
+                }
+                return
+            }
+            
+            // dataset settings
+            dataSet.colors = [.darkGreen]
+            dataSet.valueFont = UIFont(descriptor: .init(name: "Avenir Book", size: 12), size: 12)
+            dataSet.valueFormatter = DigitValueFormatter()
+            self.stepChartData.addDataSet(dataSet)
+            DispatchQueue.main.async {
+                self.stepBarChart.notifyDataSetChanged()
+            }
+        }
+    }
+
     // master chart settings
     func configureCharts() {
-        rhrLineChart.data = rhrChartData
-        rhrLineChart.delegate = self
+        rhrBarChart.data = rhrChartData
+        rhrBarChart.delegate = self
         
-        stepLineChart.data = stepChartData
-        stepLineChart.delegate = self
+        variabilityBarChart.data = variabilityChartData
+        variabilityBarChart.delegate = self
         
-        variabilityLineChart.data = variabilityChartData
-        variabilityLineChart.delegate = self
+        workoutBarChart.data = workoutChartData
+        workoutBarChart.delegate = self
         
-        workoutLineChart.data = workoutChartData
-        workoutLineChart.delegate = self
+        stepBarChart.data = stepChartData
+        stepBarChart.delegate = self
         
-        let charts = [rhrLineChart, stepLineChart, variabilityLineChart, workoutLineChart]
+        let axisPadding = 0.5
+        let charts = [rhrBarChart, variabilityBarChart, workoutBarChart, stepBarChart]
         for chart in charts {
             chart?.legend.enabled = false
             chart?.chartDescription = nil
             chart?.backgroundColor = .clear
-            chart?.scaleYEnabled = false
+            chart?.setViewPortOffsets(left: 15, top: 15, right: 15, bottom: 15)
             chart?.noDataText = "Not enough data"
             chart?.noDataTextColor = .black
             chart?.noDataFont = UIFont(descriptor: .init(name: "Avenir Book", size: 17), size: 17)
@@ -297,12 +255,16 @@ class TrendsViewController: UIViewController, ChartViewDelegate {
             chart?.xAxis.drawGridLinesEnabled = false
             chart?.xAxis.labelPosition = .bottom
             chart?.xAxis.labelTextColor = .black
+            chart?.xAxis.granularityEnabled = true
             chart?.xAxis.granularity = 1
+            chart?.xAxis.axisMinimum = -7 - axisPadding
+            chart?.xAxis.axisMaximum = 0 + axisPadding
+            chart?.xAxis.valueFormatter = DayValueFormatter()
 
             chart?.rightAxis.drawGridLinesEnabled = false
             chart?.rightAxis.drawAxisLineEnabled = false
             chart?.rightAxis.drawLabelsEnabled = false
-            
+
             chart?.leftAxis.drawAxisLineEnabled = false
             chart?.leftAxis.drawGridLinesEnabled = false
             chart?.leftAxis.drawLabelsEnabled = false
@@ -315,7 +277,7 @@ class TrendsViewController: UIViewController, ChartViewDelegate {
 extension TrendsViewController {
     @IBAction func didTouchAboutVariability(_ sender: Any) {
         let dropDown = DropDown()
-        dropDown.anchorView = variabilityLineChart
+        dropDown.anchorView = variabilityBarChart
         dropDown.dataSource = [""]
         dropDown.width = 320
         dropDown.cellHeight = 70
